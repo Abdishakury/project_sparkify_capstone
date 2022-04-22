@@ -2,11 +2,20 @@
 
 ## Table of Contents
 * [Introduction](#int)
+* [Project Motivation](#mot)
+* [File Descriptions](#des)
 * [Load and Clean Dataset](#load)
 * [Exploratory Data Analysis](#eda)
 * [Feature Engineering](#eng)
 * [Modelling](#model)
+* [Business Impact](#bus)
+* [Project Reflection](#refl)
+* [Future Work](#fut)
 * [Conclusions](#con)
+* [Github Page Blog Post](#github)
+* [Licensing, Authors, Acknowledgements](#lic)
+* [References](#refe)
+* 
 
 ## Introduction
 <a class="anchor" id="int"></a>
@@ -23,6 +32,20 @@ In this project, I will load and manipulate a music app dataset similar to Spoti
  
 No additional installations beyond the Anaconda distribution of Python and Jupyter notebooks.
 
+## Project Motivation
+<a class="anchor" id="mot"></a>
+For this project I was interested in predicting customer churn for a fictional music streaming company: Sparkify. 
+
+The project involved:
+ - Loading and cleaning a small subset (128MB) of a full dataset available (12GB) 
+ - Conducting Exploratory Data Analysis to understand the data and what features are useful for predicting churn
+ - Feature Engineering to create features that will be used in the modelling process
+ - Modelling using machine learning algorithms such as Logistic Regression, Random Forest, Gradient Boosted Trees, Linear SVM, Naive Bayes 
+
+## File Descriptions
+<a class="anchor" id="des"></a>
+There is one exploratory notebook and html file of the notebook available here to showcase my work in predicting churn. Markdown cells were used throughout to explain the process taken.
+
 ## Load and Clean Dataset
 <a class="anchor" id="load"></a>
 Our mini-dataset file is `mini_sparkify_event_data.json`. First the dataset must be loaded and cleaned, checking for invalid or missing data - for example, records without userids or sessionids. 
@@ -30,7 +53,7 @@ Our mini-dataset file is `mini_sparkify_event_data.json`. First the dataset must
 We can now create a Spark Session.
 
 We can now create a Spark Session.
-# create a Spark session
+### create a Spark session
 spark = SparkSession \
     .builder \
     .appName("Sparkify Project") \
@@ -49,10 +72,10 @@ spark.sparkContext.getConf().getAll()
  ('spark.ui.showConsoleProgress', 'true'),
  ('spark.app.name', 'Sparkify Project')]
 
-# load in the dataset
+### load in the dataset
 df = spark.read.json("mini_sparkify_event_data.json")
 
-# print the schema
+### print the schema
 df.printSchema()
 
 root
@@ -89,10 +112,10 @@ Exploratory data analysis will  be performed to observe the behavior for users w
 ### EDA for Users that Stayed vs Users that Churned
 Now we can examine behaviour of those who churned vs those who did not churn. First we will visualise those who churned vs those who stayed.
 
-# convert to pandas for visualisation
+### convert to pandas for visualisation
 df_churn = df_churn.toPandas()
 
-# plot the number of users that churned
+### plot the number of users that churned
 plt.figure(figsize = [8,6])
 ax = sns.barplot(data = df_churn, x = 'churn', y='count')
 plt.title("Numbers of Users That Churned");
@@ -139,7 +162,7 @@ sawiro
 
 Now I need to minus these and work that out in days by minus the registration from ts
 
-# I use to Pandas for the plot boxplot
+### I use to Pandas for the plot boxplot
 
 sawir
 
@@ -231,7 +254,7 @@ Now that we have our vectors we can standardise our values. This is important fo
 
 sawir:df_feature5
 
-## Train / Test / Validation Split
+### Train / Test / Validation Split
 Let's check how many records we have in total is 225 as it should be.
 
 sawir:df_feature6
@@ -303,7 +326,7 @@ sawir:df_feature13
 
 sawir:df_feature14
 
-#### Feature Importance:
+### Feature Importance:
 Finally, we can check the feature importance for our best model and plot this in a chart.
 
 sawir:df_feature15
@@ -334,6 +357,15 @@ This project could have been improved by:
 
 We started the project with a small dataset of just 128MB and 225 unique customers. After loading and cleaning our data we explored the dataset for useful features to predict churn and were able to build out the most promising features. We then preprocessed these and used the features with different machine learning algorithms. Random Forest performed the best, so we tuned the model and achieved an accuracy and F1 score of 0.88.
 
+## Github Page Blog Post 
+<a class="anchor" id="github"></a>
+The main findings of the code can be found at the Medium Blog post available [here]() explaining the technical details of my project.
+A Random Forest Classifier was chosen to be the best model by evaluating F1 score and accuracy metrics. The final model achieved an F1 and Accuracy score of 0.88. 
+
+## Licensing, Authors, Acknowledgements, etc.
+<a class="anchor" id="lic"></a>
+I'd like to acknowledge Udacity for the project idea and workspace.
+
 # References
 <a class="anchor" id="refe"></a>
 
@@ -356,54 +388,3 @@ https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Standard
 https://stackoverflow.com/questions/32565829/simple-way-to-measure-cell-execution-time-in-ipython-notebook     
 https://www.silect.is/blog/random-forest-models-in-spark-ml/     
 https://stackoverflow.com/questions/75440/how-do-i-get-the-string-with-name-of-a-class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Project Motivation
-For this project I was interested in predicting customer churn for a fictional music streaming company: Sparkify. 
-
-The project involved:
- - Loading and cleaning a small subset (128MB) of a full dataset available (12GB) 
- - Conducting Exploratory Data Analysis to understand the data and what features are useful for predicting churn
- - Feature Engineering to create features that will be used in the modelling process
- - Modelling using machine learning algorithms such as Logistic Regression, Random Forest, Gradient Boosted Trees, Linear SVM, Naive Bayes 
-
-## File Descriptions
-There is one exploratory notebook and html file of the notebook available here to showcase my work in predicting churn. Markdown cells were used throughout to explain the process taken.
-
-## Medium Blog Post 
-The main findings of the code can be found at the Medium Blog post available [here]() explaining the technical details of my project.
-A Random Forest Classifier was chosen to be the best model by evaluating F1 score and accuracy metrics. The final model achieved an F1 and Accuracy score of 0.88. 
-
-## Licensing, Authors, Acknowledgements, etc.
-I'd like to acknowledge Udacity for the project idea and workspace.
