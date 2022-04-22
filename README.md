@@ -310,27 +310,32 @@ sawir:df_feature15
 
 sawir:df_feature16
 
-# Conclusions
-<a class="anchor" id="con"></a>
 
-We started the project with a small dataset of just 128MB and 225 unique customers. After loading and cleaning our data we explored the dataset for useful features to predict churn and were able to build out the most promising features. We then preprocessed these and used the features with different machine learning algorithms. Random Forest performed the best, so we tuned the model and achieved an accuracy and F1 score of 0.88.
-
-### Business Impact:
+# Business Impact
+<a class="anchor" id="bus"></a>
 
 Now, Sparkify can use this information to target customers who are likely to churn and offer attractive incentives to stay, thereby saving Sparkify revenue and getting the customer a nice deal. Since we found that newer customers are more likely to churn, we could target them with a nice free trial of the premium service without those pesky ads! Sparkify could also work on music recommendation system so they can recommend songs that users will enjoy more and thumbs down less.
 
-### Project Reflection
+# Project Reflection
+<a class="anchor" id="refl"></a>
 
 From this project I have learned how to manipulate datasets with Spark to engineer relevant features for predicting churn. I used Spark MLib to build machine learning models to predict churn. It was interesting to start with a dataset which had the customers' user interactions and then use this to predict whether or not they were likely to churn. The best model was the Random Forest classifier which achieved an accuracy and F1 score of 0.88. It was interesting to build my first model for predicting churn in pyspark as opposed to pandas. 
 
-### Future Work
+# Future Work
+<a class="anchor" id="fut"></a>
 
 This project could have been improved by:
  - doing more feature engineering to select the best features to get a better score
  - considered overfitting problems in more depth
  - analysing mispredicted users
 
-## References
+# Conclusions
+<a class="anchor" id="con"></a>
+
+We started the project with a small dataset of just 128MB and 225 unique customers. After loading and cleaning our data we explored the dataset for useful features to predict churn and were able to build out the most promising features. We then preprocessed these and used the features with different machine learning algorithms. Random Forest performed the best, so we tuned the model and achieved an accuracy and F1 score of 0.88.
+
+# References
+<a class="anchor" id="refe"></a>
 
 https://stackoverflow.com/questions/21702342/creating-a-new-column-based-on-if-elif-else-condition     
 https://stackoverflow.com/questions/46921465/extract-substring-from-text-in-a-pandas-dataframe-as-new-column     
